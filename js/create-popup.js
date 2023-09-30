@@ -12,7 +12,7 @@ const popupTypes = {
 const getFeaturesItems = (features) => {
   let result = '';
   for (let i = 0; i < features.length; i++) {
-    result = result + '<li class="popup__feature popup__feature--' + features[i]  + '"></li>';
+    result += `<li class="popup__feature popup__feature--${features[i]}"></li>`;
   }
   return result;
 };
