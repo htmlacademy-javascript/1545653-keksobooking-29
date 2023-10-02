@@ -1,10 +1,14 @@
 import {createPinMarkers} from './map.js';
 import {debounce} from './utils.js';
+import {SLIDER_STEP} from './constants.js';
 
 const filterForm = document.querySelector('.map__filters');
 const featuresCheckboxes = document.querySelectorAll('.map__checkbox');
 const mapFilters = document.querySelectorAll('.map__filter');
 const mapFeatures = document.querySelector('.map__features');
+const DEBOUNCE_TIME = 500;
+const PRICE_RANGE_LOW = 10000;
+const PRICE_RANGE_MIDDLE = 50000;
 
 const model = {
   features: []
@@ -13,8 +17,8 @@ const model = {
 const places = [];
 
 const PriceRanges = {
-  LOW: 10000,
-  MIDDLE: 50000,
+  LOW: PRICE_RANGE_LOW,
+  MIDDLE: PRICE_RANGE_MIDDLE,
 };
 
 const getFeatures = () => Array.from(featuresCheckboxes).reduce((acc, item) => item.checked ? [...acc, item.value] : acc, []);
@@ -60,12 +64,12 @@ const filterPlaces = () => Object.keys(model).reduce((acc, item) => getFilteredP
 
 filterForm.addEventListener('change', debounce((event) => {
   updateModel(event.target.name, event.target.value);
-  createPinMarkers(filterPlaces().slice(0, 10));
-}, 500));
+  createPinMarkers(filterPlaces().slice(0, SLIDER_STEP));
+}, DEBOUNCE_TIME));
 
 const setFilters = (data) => {
   places.push(...data.slice());
-  createPinMarkers(places.slice(0, 10));
+  createPinMarkers(places.slice(0, SLIDER_STEP));
 };
 
 const disableFilters = (isDisabled = true) => {

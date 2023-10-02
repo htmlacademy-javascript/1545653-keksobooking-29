@@ -1,5 +1,6 @@
 import {updatePriceSlider} from './validate-form.js';
 import {PRICE_STEP} from './constants.js';
+import {SLIDER_MAX} from './constants.js';
 
 const priceField = document.querySelector('#price');
 const slider = document.querySelector('.ad-form__slider');
@@ -12,7 +13,7 @@ const initPriceSlider = () => {
   noUiSlider.create(slider, {
     range: {
       min: 0,
-      max: 100000
+      max: SLIDER_MAX
     },
     step: PRICE_STEP,
     format: {
@@ -31,9 +32,6 @@ const initPriceSlider = () => {
     priceField.value = price;
     updatePriceSlider();
   });
-  // priceField.addEventListener('input', (evt) => {
-  //   slider.noUiSlider.set(evt.target.value);
-  // });
   priceField.value = '';
 };
 

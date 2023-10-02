@@ -86,6 +86,6 @@ const updatePriceSlider = () => {
   }
 };
 
-const pristineReset = () => pristine.reset();
+const resetPristine = () => pristine.reset();
 
-export {validateAdForm, updatePriceSlider, pristineReset};
+export {validateAdForm, updatePriceSlider, resetPristine};
