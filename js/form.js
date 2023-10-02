@@ -50,7 +50,6 @@ imagesInput.addEventListener('change', () => {
   imagesPreviewElement.appendChild(imagesPreview);
   imagesPreview.height = PREVIEW_HEIGHT;
   imagesPreview.width = PREVIEW_WIDTH;
-  ;
   renderUploadImage(imagesInput, imagesPreview);
 });
 
