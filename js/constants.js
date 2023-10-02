@@ -32,6 +32,10 @@ const UploadFormMessage = {
 };
 
 const PRICE_STEP = 1000;
+const SLIDER_STEP = 10;
+const SLIDER_MAX = 100000;
+const PREVIEW_HEIGHT = 70;
+const PREVIEW_WIDTH = 70;
 
 export {
   START_COORDINATE,
@@ -42,6 +46,9 @@ export {
   AVATAR_URL_DEFAULT,
   UploadFormMessage,
   SEND_URL,
-  PRICE_STEP, DECIMALS, GET_URL
+  PRICE_STEP, DECIMALS, GET_URL,
+  SLIDER_STEP,
+  SLIDER_MAX,
+  PREVIEW_HEIGHT,
+  PREVIEW_WIDTH
 };
-

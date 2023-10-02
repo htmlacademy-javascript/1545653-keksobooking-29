@@ -32,8 +32,19 @@ const createCard = ({author, offer}) => {
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   cardElement.querySelector('.popup__avatar').src = author.avatar;
 
+  const VALID_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+
+  let featuresList = '';
   if (offer.features) {
-    cardElement.querySelector('.popup__features').innerHTML = getFeaturesItems(offer.features);
+    for (let i = 0; i < offer.features.length; i++) {
+      const featureIdx = VALID_FEATURES.indexOf(offer.features[i]);
+      if (featureIdx !== -1) {
+        featuresList += `<li class="popup__feature popup__feature--${VALID_FEATURES[featureIdx]}"></li>`;
+      }
+    }
+  }
+  if (featuresList) {
+    cardElement.querySelector('.popup__features').innerHTML = featuresList;
   } else {
     cardElement.querySelector('.popup__features').classList.add('hidden');
   }
@@ -44,8 +55,9 @@ const createCard = ({author, offer}) => {
   } else {
     cardElement.querySelector('.popup__photos').classList.add('hidden');
   }
-
   return cardElement;
+
+
 };
 
 export {createCard};

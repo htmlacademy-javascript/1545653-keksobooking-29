@@ -5,7 +5,10 @@ import {sendData} from './api.js';
 import {renderMessage} from './upload-message.js';
 import {resetFilters} from './filter.js';
 import {resetMap} from './map.js';
-import {AVATAR_URL_DEFAULT, UploadFormMessage, SEND_URL} from './constants.js';
+import {AVATAR_URL_DEFAULT, UploadFormMessage, SEND_URL, PREVIEW_HEIGHT, PREVIEW_WIDTH} from './constants.js';
+
+// const PREVIEW_HEIGHT = 70;
+// const PREVIEW_WIDTH = 70;
 
 const {SUCCESS, ERROR} = UploadFormMessage;
 
@@ -45,8 +48,9 @@ const resetAvatarPreview = () => {
 imagesInput.addEventListener('change', () => {
   const imagesPreview = document.createElement('img');
   imagesPreviewElement.appendChild(imagesPreview);
-  imagesPreview.height = 70;
-  imagesPreview.width = 70;
+  imagesPreview.height = PREVIEW_HEIGHT;
+  imagesPreview.width = PREVIEW_WIDTH;
+  ;
   renderUploadImage(imagesInput, imagesPreview);
 });
 
